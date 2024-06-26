@@ -91,6 +91,9 @@ OUTPUT_PATH="."
 for ((i=1; i<=NUM_FILES; i++)); do
     INPUT_URL=$(printf "%s/%03d.txt" "$INPUT_URL_BASE" "$i")
     OUTPUT_FILE=$(printf "%s/%03d.txt" "$OUTPUT_PATH" "$i")
+    echo "$INPUT_URL"
+    echo "$OUTPUT_FILE"
     curl -L -o "$OUTPUT_FILE" "$INPUT_URL"
+done
 ```
 
