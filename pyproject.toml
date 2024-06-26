@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "data-corpora-사고전서"
+version = "0.1.0"
+description = ""
+authors = ["Junho Oh <pinedance@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "2.0"
+lxml = "^5.2.2"
+regex = "^2024.5.15"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
