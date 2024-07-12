@@ -18,8 +18,10 @@ os.makedirs(output_path)
 with open(input_file, "r", encoding="utf-8-sig") as fl:
     text = fl.read()
     
-# "#"로 시작하는 행 삭제
-text = re.sub(r'^#.*\n', '', text, flags=re.MULTILINE)
+text = re.sub(r'\r\n', '\n', text, flags=re.MULTILINE)    
+    
+# "#" 이하 부분 삭제
+text = re.sub(r'#.*\n', '', text, flags=re.MULTILINE)
 
 # "<"로 시작해서 ">"로 끝나는 구절 삭제
 text = re.sub(r'^<.*?>', '', text, flags=re.MULTILINE)
@@ -31,7 +33,7 @@ text = re.sub(r'[䷋䷗䷫䷀䷁䷊☵ㄇ]', ' ', text)
 text = re.sub(r'[\(\)\[\]\-\+\*\?\!_@ㄙ□○〇/&:;0-9a-zA-Z<>]+', ' ', text)
 
 # 
-text = re.sub(r'¶+\s*\n', '', text, flags=re.MULTILINE)
+text = re.sub(r'¶+\s*\n', '\n', text, flags=re.MULTILINE)
 text = re.sub(r'[¶]+', '', text)
 
 # 불필요한 공백 줄 제거
@@ -49,7 +51,7 @@ cnt = Counter( not_han )
 print( cnt )
 
 # 출력
-N_DOC = 10
+N_DOC = 20
 text_lst = re.split( r'\s*\n\s*', text, flags=re.MULTILINE )
 n_lines = len( text_lst )
 print( n_lines )
